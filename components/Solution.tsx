@@ -31,74 +31,87 @@ const Solution: React.FC = () => {
   ];
 
   return (
-    <Section id="solution" className="relative overflow-hidden">
-      <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[80%] bg-gradient-to-r from-accent/10 via-transparent to-highlight/10 blur-3xl -z-10"></div>
+    <Section id="solution" className="bg-[#05081c]">
+      {/* ADDED: Solution heading in blue */}
+      <div className="text-center mb-8">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="inline-block"
+        >
+          <span className="text-accent text-sm font-mono uppercase tracking-[0.4em] px-4 py-2 rounded-full border border-accent/30 bg-accent/10">
+            Solution
+          </span>
+        </motion.div>
+      </div>
 
-      <div className="mb-20 text-center">
+      <div className="text-center mb-16">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-3xl md:text-5xl font-display font-bold mb-6 text-white"
+          className="text-3xl md:text-5xl font-display font-bold mb-4"
         >
-          AI Does The Heavy Lifting. Your Team Does The Closing.
+          {/* CHANGED: "Qualify AI" with blue "AI" */}
+          Qualify <span className="text-accent">AI</span> Does The Heavy Lifting. Your Team Does The Closing.
         </motion.h2>
-        <p className="text-gray-400 text-base md:text-lg max-w-3xl mx-auto">
-          Automate research, personalization, follow-up, and booking so your closers only spend time with qualified buyers.
-        </p>
+        <motion.p 
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-xl text-gray-400 max-w-3xl mx-auto"
+        >
+          We built the AI system we wish existed. Now it's yours.
+        </motion.p>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-8 relative mb-20">
-        {steps.map((item, index) => (
+      <div className="grid gap-8 md:gap-12">
+        {steps.map((step, index) => (
           <motion.div
-            key={item.title}
-            initial={{ opacity: 0, y: 20 }}
+            key={index}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.15 }}
             viewport={{ once: true }}
-            className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl shadow-[0_20px_60px_rgba(5,8,28,0.55)] relative overflow-hidden group"
+            className="relative"
           >
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-accent/10 via-transparent to-highlight/20"></div>
-            <div className="relative z-10">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 rounded-2xl bg-accent/15 flex items-center justify-center text-3xl border border-accent/30">
-                  {item.emoji}
-                </div>
-                <div>
-                  <p className="text-xs tracking-[0.4em] text-gray-500 font-mono">STEP {`0${index + 1}`}</p>
-                  <h3 className="text-sm font-semibold uppercase text-gray-300">{item.title}</h3>
+            <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
+              <div className="flex-shrink-0">
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-accent/10 border border-accent/30 flex items-center justify-center text-4xl md:text-5xl backdrop-blur">
+                  {step.emoji}
                 </div>
               </div>
-              <p className="text-2xl font-display font-bold text-white mb-4 leading-tight">{item.headline}</p>
-              <p className="text-gray-400 text-base leading-relaxed">
-                {item.description}
-              </p>
+              
+              <div className="flex-1 space-y-3">
+                <div className="text-xs md:text-sm uppercase tracking-[0.3em] text-accent font-mono">
+                  {step.title}
+                </div>
+                <h3 className="text-xl md:text-2xl font-display font-bold text-white">
+                  {step.headline}
+                </h3>
+                <p className="text-base md:text-lg text-gray-400 leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
             </div>
+            
+            {index < steps.length - 1 && (
+              <div className="hidden md:block absolute left-10 top-20 bottom-0 w-px bg-gradient-to-b from-accent/50 to-transparent"></div>
+            )}
           </motion.div>
         ))}
       </div>
 
       <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        className="max-w-4xl mx-auto"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6 }}
+        className="mt-16 text-center"
       >
-        <div className="relative rounded-2xl p-[1px] bg-gradient-to-r from-accent via-highlight to-accent bg-[length:200%_200%] animate-gradient-x shadow-[0_0_30px_rgba(0,212,255,0.2)]">
-            <div className="bg-[#0A0E27] rounded-2xl p-8 md:p-12 text-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-accent/10 via-transparent to-highlight/20 animate-pulse-slow"></div>
-                <h3 className="text-2xl md:text-4xl font-display font-bold text-white mb-3 relative z-10">
-                    RESULT: <span className="text-accent">20-30 Qualified Meetings Per Month</span>
-                </h3>
-                <p className="text-lg md:text-xl text-gray-300 relative z-10 font-medium">
-                    Guaranteed. Or you don't pay.
-                </p>
-                <div className="mt-6 flex flex-wrap justify-center gap-4 text-xs uppercase tracking-wider text-gray-400 relative z-10">
-                  <span className="px-4 py-2 rounded-full border border-white/10 bg-white/5">Research</span>
-                  <span className="px-4 py-2 rounded-full border border-white/10 bg-white/5">Personalization</span>
-                  <span className="px-4 py-2 rounded-full border border-white/10 bg-white/5">Follow-Up</span>
-                  <span className="px-4 py-2 rounded-full border border-white/10 bg-white/5">Meetings</span>
-                </div>
-            </div>
+        <div className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-accent/10 border border-accent/30">
+          <span className="text-2xl">🎯</span>
+          <p className="text-lg md:text-xl font-display font-bold text-white">
+            RESULT: <span className="text-accent">20-30 Qualified Meetings Per Month. Guaranteed.</span> Or you don't pay.
+          </p>
         </div>
       </motion.div>
     </Section>

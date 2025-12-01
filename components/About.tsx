@@ -4,6 +4,15 @@ import { motion } from 'framer-motion';
 import headshot from '../ferdi-headshot.jpg';
 
 const About: React.FC = () => {
+  const principles = [
+    "AI that researches like your best SDR.",
+    "Writes like your best copywriter.",
+    "Follows up like your most disciplined operator.",
+    "But at scale.",
+    "24/7.",
+    "Without burning out."
+  ];
+
   return (
     <Section id="about">
       <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -32,7 +41,8 @@ const About: React.FC = () => {
             </div>
             <div className="rounded-2xl border border-white/10 p-4 bg-white/5">
               <p className="text-xs uppercase tracking-[0.3em] text-gray-500">Location</p>
-              <p className="text-white font-semibold">Montagu / Paarl, South Africa</p>
+              {/* CHANGED: Cape Town */}
+              <p className="text-white font-semibold">Cape Town, South Africa</p>
             </div>
             <div className="rounded-2xl border border-white/10 p-4 bg-white/5 col-span-2">
               <p className="text-xs uppercase tracking-[0.3em] text-gray-500">Contact</p>
@@ -53,14 +63,31 @@ const About: React.FC = () => {
             Meet the Builder Behind Qualify AI
           </h2>
           <div className="space-y-6 text-gray-300 leading-relaxed text-lg">
-            <p>I'm Ferdi Labuschagne. 22 years old. Building from South Africa.</p>
+            {/* CHANGED: Cape Town */}
+            <p>I'm Ferdi Labuschagne. 22 years old. Building from Cape Town, South Africa.</p>
             <p>I built Qualify AI because I watched too many incredible B2B SaaS products struggle with empty pipelines.</p>
             <p>Not because they weren't good enough.</p>
             <p>Because manual outbound doesn't scale.</p>
             <p>You can't hire fast enough. You can't personalize at scale. Your follow-ups fall apart. Your best reps burn out.</p>
             <p>So I built what I wish existed:</p>
-            <p>AI that researches like your best SDR. Writes like your best copywriter. Follows up like your most disciplined operator.</p>
-            <p>But at scale. 24/7. Without burning out.</p>
+            
+            {/* CHANGED: 6 bullet points */}
+            <ul className="space-y-2 pl-6">
+              {principles.map((principle, index) => (
+                <motion.li
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="flex items-start gap-3"
+                >
+                  <span className="text-accent mt-1">→</span>
+                  <span>{principle}</span>
+                </motion.li>
+              ))}
+            </ul>
+
             <p>Qualify AI isn't another lead gen agency.</p>
             <p className="text-white font-semibold">It's how B2B SaaS companies will build pipeline in the AI era.</p>
             <p className="text-accent font-display font-bold">We're just getting started.</p>

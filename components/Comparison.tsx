@@ -7,7 +7,8 @@ const Comparison: React.FC = () => {
   const rows = [
     { feature: "Cost", sdr: "$120K+/year", ai: "$60K/year", save: "$60K+/year" },
     { feature: "Ramp Time", sdr: "3-6 months", ai: "2 weeks", save: "2.5-5.5 mo." },
-    { feature: "Capacity", sdr: "600/month", ai: "800/month", save: "+200/month" },
+    // CHANGED: Email Campaign Capacity
+    { feature: "Email Campaign Capacity", sdr: "600/month", ai: "800/month", save: "+200/month" },
     { feature: "Consistency", sdr: "Variable", ai: "24/7/365", save: "100% uptime" },
     { feature: "Personalization", sdr: "Burns out", ai: "Infinite", save: "No burnout" },
     { feature: "Follow-Up", sdr: "Drops ~40%", ai: "Never drops", save: "+40% done" },
@@ -124,7 +125,8 @@ const Comparison: React.FC = () => {
           <div className="space-y-2 text-lg md:text-xl text-gray-200 font-medium">
             <p>Total Savings: <span className="text-white font-bold">$60,000+ per year</span></p>
             <p>Time Savings: <span className="text-white font-bold">2.5-5.5 months faster to results</span></p>
-            <p>Meeting Boost: <span className="text-white font-bold">+10-15 qualified meetings per month</span></p>
+            {/* CHANGED: 20-30 qualified meetings */}
+            <p>Meeting Boost: <span className="text-white font-bold">20-30 qualified meetings per month</span></p>
             <p>ROI: <span className="text-green-300 font-bold">100% cost savings in Year 1 alone</span></p>
           </div>
         </div>

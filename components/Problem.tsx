@@ -45,6 +45,20 @@ const Problem: React.FC = () => {
 
   return (
     <Section id="problem" className="bg-primary relative z-10">
+      {/* ADDED: Problem heading in blue */}
+      <div className="text-center mb-8">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="inline-block"
+        >
+          <span className="text-accent text-sm font-mono uppercase tracking-[0.4em] px-4 py-2 rounded-full border border-accent/30 bg-accent/10">
+            Problem
+          </span>
+        </motion.div>
+      </div>
+
       <div className="text-center mb-16">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
@@ -52,7 +66,8 @@ const Problem: React.FC = () => {
           viewport={{ once: true }}
           className="text-3xl md:text-5xl font-display font-bold mb-4"
         >
-          Your Sales Team Is Drowning In The Wrong Work
+          {/* CHANGED: "Your Sales Team" in purple */}
+          <span className="text-purple-400">Your Sales Team</span> Is Drowning In The Wrong Work
         </motion.h2>
         <motion.p 
           initial={{ opacity: 0, y: 10 }}
